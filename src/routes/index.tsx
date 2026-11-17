@@ -516,9 +516,12 @@ const sectionTitle =
 
 function Index() {
   const { variant } = Route.useSearch();
+  const [hydrated, setHydrated] = useState(false);
   const year = new Date().getFullYear();
 
-  if (variant) {
+  useEffect(() => setHydrated(true), []);
+
+  if (hydrated && variant) {
     return <PortfolioDesignPrototypes initialVariant={variant} />;
   }
 
