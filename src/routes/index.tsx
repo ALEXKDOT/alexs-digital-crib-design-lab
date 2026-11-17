@@ -5,6 +5,7 @@ import cvAsset from "@/assets/alexander-krawec-cv.pdf.asset.json";
 import clinicalShot from "@/assets/clinical-timeline-preview.webp.asset.json";
 import clinicalVideo from "@/assets/clinical-timeline-preview.mp4.asset.json";
 import clinicalWebm from "@/assets/clinical-timeline-preview.webm.asset.json";
+import centralParkAsset from "@/assets/central-park-footer.webp.asset.json";
 import edShot from "@/assets/ed-throughput-preview.webp.asset.json";
 import edVideo from "@/assets/ed-throughput-preview.mp4.asset.json";
 import edWebm from "@/assets/ed-throughput-preview.webm.asset.json";
@@ -257,6 +258,8 @@ function ProjectMedia({ feature }: { feature: Feature }) {
       <img
         src={limbwatchAsset.url}
         alt="LimbWatch concept illustration showing sensor patches on a foot connected to a small monitor."
+        width={668}
+        height={668}
         loading="lazy"
       />
     );
@@ -371,6 +374,48 @@ function ProjectChapter({ feature, index }: { feature: Feature; index: number })
   );
 }
 
+function SignalEngraving() {
+  return (
+    <svg
+      className="ex-storybook-engraving ex-storybook-engraving--signal"
+      viewBox="0 0 640 640"
+      aria-hidden="true"
+    >
+      <path className="ex-engraving-frame" d="M42 74 Q320 18 598 74V566Q320 622 42 566Z" />
+      <path d="M96 478 Q184 438 270 472T448 466T566 474" />
+      <path d="M82 500 Q176 462 270 494T458 490T580 498" />
+      <circle cx="320" cy="294" r="156" />
+      <circle cx="320" cy="294" r="112" />
+      <path d="m320 120 28 146 132 28-132 28-28 146-28-146-132-28 132-28Z" />
+      <circle cx="320" cy="294" r="18" />
+      <path d="m126 164 7 16 16 7-16 7-7 16-7-16-16-7 16-7Zm386 58 5 12 12 5-12 5-5 12-5-12-12-5 12-5ZM150 370l5 12 12 5-12 5-5 12-5-12-12-5 12-5Z" />
+      <path
+        className="ex-engraving-hatch"
+        d="M178 234l44-58m-28 104 72-96m-54 148 86-114m52 164 88-116m-42 154 70-92"
+      />
+    </svg>
+  );
+}
+
+function ApproachEngraving() {
+  return (
+    <svg
+      className="ex-storybook-engraving ex-storybook-engraving--approach"
+      viewBox="0 0 640 640"
+      aria-hidden="true"
+    >
+      <path className="ex-engraving-frame" d="M48 82 Q320 24 592 82V558Q320 616 48 558Z" />
+      <circle cx="320" cy="220" r="72" />
+      <path d="M320 98v34m0 176v34M198 220h34m176 0h34m-208-86 24 24m124 124 24 24m0-172-24 24M258 282l-24 24" />
+      <path d="M106 456 Q184 408 270 444T448 438T566 450" />
+      <path d="M92 482 Q190 438 284 470T472 466T582 478" />
+      <path d="M148 536q82-58 166-30 84-28 178 30V368q-94-56-178-22-84-34-166 22Z" />
+      <path d="M314 346v160M174 390q70-38 140-14m152 14q-76-38-152-14M182 424q66-34 132-12m144 12q-72-34-144-12" />
+      <path className="ex-engraving-hatch" d="m180 516 28-44m8 54 36-54m176 44-28-44m-8 54-36-54" />
+    </svg>
+  );
+}
+
 function Index() {
   return (
     <div className="ex-site" id="top">
@@ -395,6 +440,15 @@ function Index() {
 
       <main id="main" tabIndex={-1}>
         <section className="ex-hero" aria-labelledby="hero-title">
+          <img
+            className="ex-hero-engraving layer"
+            src={centralParkAsset.url}
+            alt=""
+            width={1920}
+            height={767}
+            aria-hidden="true"
+            fetchPriority="high"
+          />
           <div className="ex-wrap wrap ex-hero-inner">
             <div className="ex-hero-copy hero-text">
               <p className="ex-kicker">MEDICINE · EDUCATION · BIODESIGN</p>
@@ -414,20 +468,20 @@ function Index() {
               </div>
             </div>
 
-            <dl className="ex-hero-facts strip">
+            <div className="ex-hero-facts">
               <div>
-                <dt>PRIMARY AFFILIATION</dt>
-                <dd>David Geffen School of Medicine at UCLA</dd>
+                <p className="ex-hero-fact-label">PRIMARY AFFILIATION</p>
+                <p className="ex-hero-fact-value">David Geffen School of Medicine at UCLA</p>
               </div>
               <div>
-                <dt>Fellowship</dt>
-                <dd>UCLA–Anderson Biodesign 2026</dd>
+                <p className="ex-hero-fact-label">Fellowship</p>
+                <p className="ex-hero-fact-value">UCLA–Anderson Biodesign 2026</p>
               </div>
               <div>
-                <dt>Founder</dt>
-                <dd>Nokota MCAT Tutoring</dd>
+                <p className="ex-hero-fact-label">Founder</p>
+                <p className="ex-hero-fact-value">Nokota MCAT Tutoring</p>
               </div>
-            </dl>
+            </div>
           </div>
         </section>
 
@@ -465,7 +519,13 @@ function Index() {
             </Reveal>
             <Reveal className="ex-more-visual">
               <a href="https://nokotamcat.com/" aria-label="Visit Nokota">
-                <img src={nokotaShot.url} alt="Nokota MCAT Tutoring website" loading="lazy" />
+                <img
+                  src={nokotaShot.url}
+                  alt="Nokota MCAT Tutoring website"
+                  width={1920}
+                  height={997}
+                  loading="lazy"
+                />
               </a>
             </Reveal>
           </div>
@@ -496,10 +556,7 @@ function Index() {
               role="img"
               aria-label="Frontier Signal"
             >
-              <i />
-              <i />
-              <i />
-              <i />
+              <SignalEngraving />
             </Reveal>
           </div>
         </section>
@@ -519,9 +576,7 @@ function Index() {
               role="img"
               aria-label="Development approach"
             >
-              <i />
-              <i />
-              <i />
+              <ApproachEngraving />
             </div>
           </div>
         </section>

@@ -877,6 +877,10 @@ export default function SkylineWater({
         ref={imgRef}
         src={src}
         alt={alt}
+        width={1920}
+        height={640}
+        loading="lazy"
+        decoding="async"
         draggable={false}
         style={{
           display: "block",

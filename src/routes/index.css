@@ -1,22 +1,22 @@
 .ex-site {
-  --ex-paper: #f8f5ec;
-  --ex-paper-strong: #fffdf7;
-  --ex-ink: #17324b;
-  --ex-blue: #1f4d78;
-  --ex-blue-deep: #173a5f;
-  --ex-sky: #dce8ee;
-  --ex-sand: #ece3d3;
-  --ex-sage: #dce4d9;
-  --ex-muted: #566573;
-  --ex-line: rgb(23 50 75 / 20%);
+  --ex-paper: #faf7f0;
+  --ex-paper-strong: #fffaf0;
+  --ex-ink: #234a70;
+  --ex-blue: #2f5585;
+  --ex-blue-deep: #21466b;
+  --ex-sky: #e8eff0;
+  --ex-sand: #f1e8d8;
+  --ex-sage: #ebefe5;
+  --ex-muted: #526b7d;
+  --ex-line: rgb(47 85 133 / 28%);
   --ex-wrap: 1200px;
   position: relative;
   overflow: clip;
   background: var(--ex-paper);
   color: var(--ex-ink);
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.55;
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .ex-site *,
@@ -93,16 +93,17 @@
 
 .ex-brand {
   justify-self: start;
-  font-size: 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 23px;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .ex-nav nav {
   display: flex;
   justify-self: center;
   gap: 32px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .ex-nav nav a,
@@ -128,10 +129,14 @@
   justify-content: center;
   justify-self: end;
   padding-inline: 20px;
+  border: 1px solid var(--ex-ink);
+  outline: 1px solid rgb(255 250 240 / 72%);
+  outline-offset: -4px;
   background: var(--ex-ink);
   color: var(--ex-paper-strong) !important;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
   transition:
     background-color 180ms ease,
     transform 180ms ease;
@@ -148,16 +153,26 @@
 .ex-footer::before {
   position: absolute;
   z-index: 0;
-  top: 0;
-  bottom: 0;
-  left: 25%;
-  width: 1px;
-  border-left: 1px dashed currentColor;
-  box-shadow:
-    25vw 0 0 currentColor,
-    50vw 0 0 currentColor;
+  inset: 22px;
+  border: 1px solid currentColor;
   content: "";
-  opacity: 0.11;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.ex-chapter::after,
+.ex-approach::after {
+  position: absolute;
+  z-index: 1;
+  top: 34px;
+  left: 50%;
+  color: currentColor;
+  content: "✦";
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.5;
+  transform: translateX(-50%);
   pointer-events: none;
 }
 
@@ -166,25 +181,35 @@
   min-height: 100svh;
   overflow: hidden;
   padding-top: 72px;
-  background: var(--ex-sky);
+  background: var(--ex-paper);
 }
 
 .ex-hero::after {
   position: absolute;
-  z-index: 0;
-  top: 20%;
-  right: max(96px, calc((100vw - var(--ex-wrap)) / 2 + 72px));
-  width: min(46vw, 660px);
-  aspect-ratio: 1.35;
-  border: 1px solid var(--ex-blue);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 36px transparent,
-    0 0 0 37px var(--ex-blue),
-    0 0 0 72px transparent,
-    0 0 0 73px var(--ex-blue);
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  border-top: 1px solid var(--ex-line);
+  border-bottom: 1px solid var(--ex-line);
   content: "";
-  opacity: 0.24;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.ex-hero-engraving {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 52%;
+  object-fit: cover;
+  object-position: right bottom;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
   animation: ex-drawing-in 1100ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
   pointer-events: none;
 }
@@ -209,27 +234,29 @@
 .ex-project-note,
 .ex-project-meta,
 .ex-requirements {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .ex-kicker {
   margin-bottom: 28px !important;
-  letter-spacing: 0.11em;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.12em;
 }
 
 .ex-hero h1 {
   max-width: 8ch;
   font-size: clamp(76px, 10.2vw, 148px);
-  font-weight: 400;
-  line-height: 0.86;
-  letter-spacing: -0.075em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
 }
 
 .ex-hero-lead {
   max-width: 56ch;
   margin-top: 48px !important;
-  font-size: clamp(19px, 1.65vw, 23px);
+  font-size: clamp(20px, 1.7vw, 25px);
   line-height: 1.5;
 }
 
@@ -247,10 +274,14 @@
   gap: 32px;
   margin-top: 28px;
   padding-inline: 22px;
+  border: 1px solid var(--ex-ink);
+  outline: 1px solid rgb(255 250 240 / 72%);
+  outline-offset: -4px;
   background: var(--ex-ink);
   color: var(--ex-paper-strong) !important;
-  font-size: 16px;
-  font-weight: 500;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
   transition:
     background-color 180ms ease,
     color 180ms ease,
@@ -277,7 +308,7 @@
 .ex-button--secondary {
   justify-content: center;
   min-width: 112px;
-  border: 1px solid var(--ex-ink);
+  outline-color: var(--ex-ink);
   background: transparent;
   color: var(--ex-ink) !important;
 }
@@ -288,7 +319,11 @@
 }
 
 .ex-hero-facts {
-  border-top: 1px solid currentColor;
+  padding: 8px 22px;
+  border: 1px solid currentColor;
+  outline: 1px solid var(--ex-line);
+  outline-offset: -6px;
+  background: rgb(250 247 240 / 88%);
   animation: ex-hero-in 760ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -297,16 +332,16 @@
   border-bottom: 1px solid var(--ex-line);
 }
 
-.ex-hero-facts dt {
+.ex-hero-fact-label {
   margin-bottom: 6px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.09em;
-  text-transform: uppercase;
+  font-variant-caps: small-caps;
 }
 
-.ex-hero-facts dd {
-  font-size: 16px;
+.ex-hero-fact-value {
+  font-size: 17px;
   line-height: 1.45;
 }
 
@@ -341,9 +376,8 @@
 }
 
 .ex-chapter--blue {
-  --ex-line: rgb(248 245 236 / 24%);
-  background: var(--ex-blue-deep);
-  color: var(--ex-paper-strong);
+  background: #dfeaec;
+  color: var(--ex-ink);
 }
 
 .ex-project-layout,
@@ -368,21 +402,22 @@
 .ex-section-heading h2,
 .ex-approach h2,
 .ex-footer h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(42px, 5vw, 72px);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
 }
 
 .ex-section-heading p {
   max-width: 48ch;
   margin-top: 18px !important;
   color: var(--ex-muted);
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .ex-chapter--blue .ex-section-heading p {
-  color: rgb(248 245 236 / 72%);
+  color: var(--ex-muted);
 }
 
 .ex-project-meta {
@@ -393,8 +428,8 @@
   padding-block: 14px;
   border-top: 1px solid currentColor;
   border-bottom: 1px solid var(--ex-line);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-variant-caps: small-caps;
 }
 
 .ex-project-meta span:first-child {
@@ -404,15 +439,17 @@
 .ex-project-copy h3,
 .ex-more-copy h3 {
   max-width: 11ch;
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(42px, 4.5vw, 64px);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.065em;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
 }
 
 .ex-project-subtitle {
   margin-top: 16px !important;
-  font-size: clamp(18px, 1.55vw, 22px);
+  font-size: clamp(19px, 1.65vw, 24px);
+  font-style: italic;
   line-height: 1.4;
 }
 
@@ -422,14 +459,14 @@
 }
 
 .ex-chapter--blue .ex-project-note {
-  color: rgb(248 245 236 / 72%);
+  color: var(--ex-muted);
 }
 
 .ex-project-description {
   max-width: 51ch;
   margin-top: 28px !important;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.68;
 }
 
 .ex-requirements {
@@ -443,7 +480,7 @@
   top: 0;
   bottom: 0;
   left: -16px;
-  width: 2px;
+  width: 1px;
   background: currentColor;
   content: "";
 }
@@ -451,7 +488,7 @@
 .ex-requirements p:first-child {
   margin-bottom: 7px !important;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-variant-caps: small-caps;
 }
 
 .ex-requirements p:not(:first-child) {
@@ -459,16 +496,16 @@
 }
 
 .ex-chapter--blue .ex-requirements p:not(:first-child) {
-  color: rgb(248 245 236 / 72%);
+  color: var(--ex-muted);
 }
 
 .ex-chapter--blue .ex-button {
-  background: var(--ex-paper-strong);
-  color: var(--ex-blue-deep) !important;
+  background: var(--ex-ink);
+  color: var(--ex-paper-strong) !important;
 }
 
 .ex-chapter--blue .ex-button:hover {
-  background: var(--ex-sky);
+  background: var(--ex-blue);
 }
 
 .ex-project-visual,
@@ -477,17 +514,35 @@
   min-width: 0;
 }
 
+.ex-project-visual::after,
+.ex-more-visual::after {
+  position: absolute;
+  z-index: 2;
+  top: -35px;
+  right: 8px;
+  color: var(--ex-blue);
+  content: "❦";
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
 .ex-project-number {
   position: absolute;
   z-index: -1;
   top: 0;
   right: -0.08em;
-  color: currentColor;
+  color: transparent;
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(160px, 21vw, 320px);
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 500;
   line-height: 0.7;
   letter-spacing: -0.1em;
-  opacity: 0.08;
+  opacity: 0.16;
+  -webkit-text-stroke: 1px var(--ex-blue);
   pointer-events: none;
 }
 
@@ -504,6 +559,8 @@
   display: block;
   overflow: hidden;
   border: 1px solid currentColor;
+  outline: 1px solid var(--ex-line);
+  outline-offset: -7px;
   background: var(--ex-paper-strong);
   transition:
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -512,6 +569,7 @@
 
 .ex-media-frame {
   aspect-ratio: 4 / 3;
+  padding: 10px;
 }
 
 .ex-media-frame img,
@@ -520,6 +578,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+  border: 1px solid var(--ex-line);
 }
 
 .ex-media-frame--limbwatch img {
@@ -532,12 +591,12 @@
 .ex-more-visual a:hover,
 .ex-more-visual a:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 10px 10px 0 rgb(23 50 75 / 12%);
+  box-shadow: 8px 8px 0 rgb(47 85 133 / 14%);
 }
 
 .ex-chapter--blue .ex-media-link:hover .ex-media-frame,
 .ex-chapter--blue .ex-media-link:focus-visible .ex-media-frame {
-  box-shadow: 10px 10px 0 rgb(248 245 236 / 12%);
+  box-shadow: 8px 8px 0 rgb(47 85 133 / 14%);
 }
 
 .ex-details {
@@ -557,14 +616,15 @@
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 16px;
+  font-size: 17px;
   text-align: left;
   cursor: pointer;
 }
 
 .ex-details-mark {
-  font-size: 25px;
-  font-weight: 300;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 29px;
+  font-weight: 400;
   line-height: 1;
   transition: transform 220ms ease;
 }
@@ -595,16 +655,17 @@
 .ex-details-content p {
   padding: 0 0 20px;
   color: var(--ex-muted);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.65;
 }
 
 .ex-chapter--blue .ex-details-content p {
-  color: rgb(248 245 236 / 72%);
+  color: var(--ex-muted);
 }
 
 .ex-more-visual a {
   aspect-ratio: 4 / 3;
+  padding: 10px;
 }
 
 .ex-more-visual img {
@@ -612,6 +673,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+  border: 1px solid var(--ex-line);
 }
 
 .ex-signal-illustration {
@@ -619,57 +681,37 @@
   min-height: 640px;
   overflow: hidden;
   border: 1px solid currentColor;
+  outline: 1px solid var(--ex-line);
+  outline-offset: -7px;
+  background: var(--ex-paper-strong);
 }
 
-.ex-signal-illustration::before,
-.ex-signal-illustration::after {
+.ex-storybook-engraving {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--ex-blue);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.ex-storybook-engraving .ex-engraving-frame {
+  stroke-width: 2.5;
+}
+
+.ex-storybook-engraving .ex-engraving-hatch {
+  opacity: 0.35;
+  stroke-width: 1;
+}
+
+.ex-storybook-engraving--signal {
   position: absolute;
-  content: "";
-  background: currentColor;
-}
-
-.ex-signal-illustration::before {
-  top: 50%;
-  right: 12%;
-  left: 12%;
-  height: 1px;
-}
-
-.ex-signal-illustration::after {
-  top: 12%;
-  bottom: 12%;
-  left: 50%;
-  width: 1px;
-}
-
-.ex-signal-illustration i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.ex-signal-illustration i:nth-child(1) {
-  width: 72%;
-  aspect-ratio: 1;
-}
-
-.ex-signal-illustration i:nth-child(2) {
-  width: 50%;
-  aspect-ratio: 1;
-}
-
-.ex-signal-illustration i:nth-child(3) {
-  width: 28%;
-  aspect-ratio: 1;
-}
-
-.ex-signal-illustration i:nth-child(4) {
-  width: 18px;
-  aspect-ratio: 1;
-  background: currentColor;
+  inset: 0;
+  padding: 24px;
 }
 
 .ex-approach {
@@ -685,25 +727,15 @@
   aspect-ratio: 1;
   overflow: hidden;
   border: 1px solid var(--ex-blue);
+  outline: 1px solid var(--ex-line);
+  outline-offset: -7px;
+  background: var(--ex-paper-strong);
 }
 
-.ex-approach-illustration i {
+.ex-storybook-engraving--approach {
   position: absolute;
-  border: 1px solid var(--ex-blue);
-  border-radius: 50%;
-}
-
-.ex-approach-illustration i:nth-child(1) {
-  inset: 10%;
-}
-
-.ex-approach-illustration i:nth-child(2) {
-  inset: 25%;
-}
-
-.ex-approach-illustration i:nth-child(3) {
-  inset: 40%;
-  background: var(--ex-blue);
+  inset: 0;
+  padding: 24px;
 }
 
 .ex-approach-inner {
@@ -711,7 +743,7 @@
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: center;
+  align-items: start;
   gap: 24px;
   padding-block: 120px 80px;
 }
@@ -719,9 +751,9 @@
 .ex-approach-copy p {
   max-width: 38ch;
   margin-top: 32px !important;
-  font-size: clamp(19px, 1.8vw, 26px);
-  line-height: 1.45;
-  letter-spacing: -0.025em;
+  font-size: clamp(21px, 1.9vw, 28px);
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .ex-footer {
@@ -729,7 +761,7 @@
   height: 100svh;
   min-height: 100svh;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   overflow: hidden;
   background: var(--ex-paper);
 }
@@ -737,18 +769,20 @@
 .ex-contact {
   position: relative;
   z-index: 2;
-  padding-block: 104px 40px;
+  padding-block: 84px 24px;
 }
 
 .ex-contact > p:not(.ex-copyright) {
   margin-top: 28px !important;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .ex-email {
   display: inline-block;
   margin-top: 6px;
-  font-size: clamp(20px, 2vw, 30px);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(24px, 2.3vw, 34px);
+  font-weight: 500;
 }
 
 .ex-contact nav {
@@ -761,7 +795,7 @@
 .ex-copyright {
   margin-top: 28px !important;
   color: var(--ex-muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .ex-skyline {
@@ -814,7 +848,19 @@
 
 @media (min-width: 1024px) {
   #work {
-    padding-block: 88px 39px;
+    padding-block: 72px 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ex-chapter {
+    height: 100svh;
+    min-height: 100svh;
+    padding-block: 112px 72px;
+  }
+
+  .ex-more.ex-chapter--sky {
+    align-items: flex-end;
   }
 }
 
@@ -836,6 +882,12 @@
 
   .ex-hero-copy {
     max-width: 760px;
+  }
+
+  .ex-hero-engraving {
+    right: 0;
+    width: 100%;
+    opacity: 0.14;
   }
 
   .ex-hero-facts {
@@ -860,7 +912,7 @@
   }
 
   .ex-chapter {
-    min-height: auto;
+    min-height: 100svh;
     padding-block: 112px 88px;
   }
 
@@ -897,7 +949,7 @@
 
 @media (max-width: 639px) {
   .ex-site {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .ex-wrap {
@@ -935,13 +987,13 @@
 
   .ex-kicker {
     margin-bottom: 22px !important;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .ex-hero h1 {
     max-width: 7ch;
     font-size: clamp(58px, 18vw, 72px);
-    line-height: 0.9;
+    line-height: 0.86;
   }
 
   .ex-hero-lead {
@@ -977,23 +1029,36 @@
   }
 
   .ex-hero::after {
-    top: 30%;
-    right: 60px;
-    width: min(54vw, 380px);
-    box-shadow:
-      0 0 0 22px transparent,
-      0 0 0 23px var(--ex-blue),
-      0 0 0 44px transparent,
-      0 0 0 45px var(--ex-blue);
-    opacity: 0.18;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    opacity: 0.65;
+    box-shadow: none;
+  }
+
+  .ex-hero-engraving {
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 33%;
+    opacity: 0.14;
   }
 
   .ex-hero::before,
   .ex-chapter::before,
   .ex-approach::before,
   .ex-footer::before {
-    left: 50%;
+    inset: 12px;
     box-shadow: none;
+  }
+
+  .ex-chapter::after,
+  .ex-approach::after {
+    top: 25px;
+    font-size: 20px;
   }
 
   .ex-chapter {
@@ -1034,7 +1099,7 @@
   }
 
   .ex-project-description {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .ex-project-number {
@@ -1056,7 +1121,7 @@
   }
 
   .ex-approach-copy p {
-    font-size: 21px;
+    font-size: 22px;
   }
 
   .ex-footer {
