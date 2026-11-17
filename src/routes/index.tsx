@@ -17,16 +17,23 @@ import nmatlasWebm from "@/assets/nmatlas-preview.webm.asset.json";
 import nmatlasShot from "@/assets/nmatlas-poster.webp.asset.json";
 import manhattanFooter from "@/assets/manhattan-footer.png.asset.json";
 import SkylineWater from "@/components/SkylineWater";
+import { PortfolioDesignPrototypes, type PrototypeVariant } from "./-portfolio-design-prototypes";
 
 const TITLE = "Alex Krawec — Medicine, Education & Design";
 const DESCRIPTION =
   "Alex Krawec is a UCLA medical student interested in psychiatry, medical education, and biodesign. Explore selected projects, teaching work, and his CV.";
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { variant?: PrototypeVariant } => {
+    const variant = search["variant"];
+    return variant === "A" || variant === "B" || variant === "C" ? { variant } : {};
+  },
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
+      { name: "page-type", content: "service" },
+      { name: "site-kind", content: "other" },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
@@ -508,7 +515,13 @@ const sectionTitle =
   "font-display text-[1.75rem] font-bold leading-tight text-foreground sm:text-[2.125rem]";
 
 function Index() {
+  const { variant } = Route.useSearch();
   const year = new Date().getFullYear();
+
+  if (variant) {
+    return <PortfolioDesignPrototypes initialVariant={variant} />;
+  }
+
   return (
     <div
       id="top"
@@ -588,7 +601,11 @@ function Index() {
         </div>
       </header>
 
-      <main id="main" tabIndex={-1} className={`${wrap} focus:outline-none`}>
+      <main
+        id="main"
+        tabIndex={-1}
+        className={`${wrap} focus:outline-2 focus:outline-ring focus:outline-offset-2`}
+      >
         <section id="work" aria-labelledby="work-heading" className="scroll-mt-4 py-12 sm:py-20">
           <h2 id="work-heading" className={sectionTitle}>
             Selected work

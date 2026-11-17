@@ -59,7 +59,6 @@ let started = false;
 export function startAnalytics(): (path: string) => void {
   const noop = () => {};
   if (started || typeof window === "undefined") return noop;
-  if (navigator.webdriver) return noop;
   started = true;
 
   const sid = getSid();
