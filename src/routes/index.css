@@ -199,15 +199,15 @@
 }
 
 .ex-hero-engraving {
+  --ex-hero-image-opacity: 0.28;
   position: absolute;
   z-index: 0;
-  top: -96px;
-  right: -7vw;
-  width: min(72vw, 1100px);
-  height: calc(100% + 96px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: 58% center;
-  opacity: 0.3;
+  object-position: center;
+  opacity: var(--ex-hero-image-opacity);
   mix-blend-mode: multiply;
   animation: ex-drawing-in 1100ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
   pointer-events: none;
@@ -358,7 +358,7 @@
   min-height: 780px;
   align-items: flex-start;
   overflow: hidden;
-  padding-block: 80px 64px;
+  padding-block: 80px 48px;
 }
 
 .ex-chapter--paper {
@@ -823,27 +823,40 @@
 @keyframes ex-drawing-in {
   from {
     opacity: 0;
-    transform: translateY(32px) scale(0.96);
+    transform: scale(1.02);
   }
 
   to {
-    opacity: 0.32;
-    transform: translateY(0) scale(1);
+    opacity: var(--ex-hero-image-opacity);
+    transform: scale(1);
   }
 }
 
 @media (min-width: 1024px) {
   #work {
-    min-height: 860px;
-    padding-block: 80px 64px;
+    min-height: 840px;
+    padding-block: 80px 48px;
+  }
+
+  .ex-approach-inner {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  .ex-approach-copy {
+    grid-column: span 5;
+  }
+
+  .ex-approach-illustration {
+    grid-column: span 7;
   }
 }
 
 @media (min-width: 1200px) {
   .ex-chapter {
-    height: 100svh;
-    min-height: 100svh;
-    padding-block: 80px 64px;
+    height: auto;
+    min-height: 840px;
+    padding-block: 80px 48px;
   }
 }
 
@@ -874,11 +887,7 @@
   }
 
   .ex-hero-engraving {
-    top: -72px;
-    right: -18%;
-    width: 92%;
-    height: calc(100% + 72px);
-    opacity: 0.2;
+    --ex-hero-image-opacity: 0.22;
   }
 
   .ex-hero-facts {
@@ -913,7 +922,7 @@
 
   .ex-chapter {
     min-height: auto;
-    padding-block: 80px 64px;
+    padding-block: 80px 48px;
   }
 
   .ex-project-copy,
@@ -1035,11 +1044,7 @@
   }
 
   .ex-hero-engraving {
-    top: -56px;
-    right: -42%;
-    width: 142%;
-    height: 58%;
-    opacity: 0.16;
+    --ex-hero-image-opacity: 0.18;
   }
 
   .ex-hero::before,
@@ -1057,7 +1062,7 @@
   }
 
   .ex-chapter {
-    padding-block: 68px 56px;
+    padding-block: 68px 40px;
   }
 
   .ex-project-layout,
