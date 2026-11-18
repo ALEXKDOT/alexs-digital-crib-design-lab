@@ -201,14 +201,13 @@
 .ex-hero-engraving {
   position: absolute;
   z-index: 0;
-  right: 0;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  height: 52%;
+  top: -96px;
+  right: -7vw;
+  width: min(72vw, 1100px);
+  height: calc(100% + 96px);
   object-fit: cover;
-  object-position: right bottom;
-  opacity: 0.2;
+  object-position: 58% center;
+  opacity: 0.3;
   mix-blend-mode: multiply;
   animation: ex-drawing-in 1100ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
   pointer-events: none;
@@ -218,14 +217,15 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   min-height: calc(100svh - 72px);
-  align-items: end;
+  align-items: start;
   gap: 24px;
-  padding-block: 96px 56px;
+  padding-block: 56px 44px;
 }
 
 .ex-hero-copy {
+  grid-column: span 5;
   max-width: 780px;
   animation: ex-hero-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -308,17 +308,19 @@
 .ex-button--secondary {
   justify-content: center;
   min-width: 112px;
-  outline-color: var(--ex-ink);
-  background: transparent;
-  color: var(--ex-ink) !important;
+  border-color: var(--ex-blue);
+  outline-color: rgb(47 85 133 / 36%);
+  background: #fff;
+  color: var(--ex-blue-deep) !important;
 }
 
 .ex-button--secondary:hover {
-  background: var(--ex-ink);
-  color: var(--ex-paper-strong) !important;
+  background: var(--ex-sky);
+  color: var(--ex-blue-deep) !important;
 }
 
 .ex-hero-facts {
+  grid-column: span 7;
   padding: 8px 22px;
   border: 1px solid currentColor;
   outline: 1px solid var(--ex-line);
@@ -353,10 +355,10 @@
 
 .ex-chapter {
   display: flex;
-  min-height: 100svh;
+  min-height: 780px;
   align-items: center;
   overflow: hidden;
-  padding-block: 120px 80px;
+  padding-block: 88px 64px;
 }
 
 .ex-chapter--paper {
@@ -385,18 +387,19 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
   gap: 24px;
 }
 
 .ex-project-copy,
 .ex-more-copy {
+  grid-column: span 5;
   max-width: none;
 }
 
 .ex-section-heading {
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .ex-section-heading h2,
@@ -511,6 +514,7 @@
 .ex-project-visual,
 .ex-more-visual {
   position: relative;
+  grid-column: span 7;
   min-width: 0;
 }
 
@@ -526,23 +530,6 @@
   font-size: 28px;
   line-height: 1;
   opacity: 0.72;
-  pointer-events: none;
-}
-
-.ex-project-number {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: -0.08em;
-  color: transparent;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(160px, 21vw, 320px);
-  font-style: italic;
-  font-weight: 500;
-  line-height: 0.7;
-  letter-spacing: -0.1em;
-  opacity: 0.16;
-  -webkit-text-stroke: 1px var(--ex-blue);
   pointer-events: none;
 }
 
@@ -568,8 +555,8 @@
 }
 
 .ex-media-frame {
-  aspect-ratio: 4 / 3;
-  padding: 10px;
+  aspect-ratio: 16 / 10;
+  padding: 8px;
 }
 
 .ex-media-frame img,
@@ -676,9 +663,21 @@
   border: 1px solid var(--ex-line);
 }
 
+.ex-more-visual--horse a {
+  aspect-ratio: 16 / 10;
+}
+
+.ex-more-visual--horse img {
+  object-fit: contain;
+  object-position: center;
+  padding: clamp(24px, 4vw, 56px);
+  mix-blend-mode: multiply;
+}
+
 .ex-signal-illustration {
   position: relative;
-  min-height: 640px;
+  grid-column: span 7;
+  min-height: 560px;
   overflow: hidden;
   border: 1px solid currentColor;
   outline: 1px solid var(--ex-line);
@@ -828,27 +827,10 @@
   }
 }
 
-@keyframes ex-number-shift {
-  from {
-    transform: translateY(48px);
-  }
-
-  to {
-    transform: translateY(-48px);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .ex-project-number {
-    animation: ex-number-shift linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
-  }
-}
-
 @media (min-width: 1024px) {
   #work {
-    padding-block: 72px 30px;
+    min-height: 860px;
+    padding-block: 88px 64px;
   }
 }
 
@@ -856,11 +838,7 @@
   .ex-chapter {
     height: 100svh;
     min-height: 100svh;
-    padding-block: 112px 72px;
-  }
-
-  .ex-more.ex-chapter--sky {
-    align-items: flex-end;
+    padding-block: 88px 64px;
   }
 }
 
@@ -871,8 +849,14 @@
 
   .ex-hero-inner {
     grid-template-columns: 1fr;
-    align-content: end;
-    gap: 56px;
+    align-content: start;
+    gap: 40px;
+    padding-top: 48px;
+  }
+
+  .ex-hero-copy,
+  .ex-hero-facts {
+    grid-column: auto;
   }
 
   .ex-hero h1 {
@@ -885,14 +869,17 @@
   }
 
   .ex-hero-engraving {
-    right: 0;
-    width: 100%;
-    opacity: 0.14;
+    top: -72px;
+    right: -18%;
+    width: 92%;
+    height: calc(100% + 72px);
+    opacity: 0.2;
   }
 
   .ex-hero-facts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 0;
   }
 
   .ex-hero-facts > div {
@@ -908,12 +895,20 @@
   .ex-more-layout,
   .ex-approach-inner {
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 48px;
+  }
+
+  .ex-project-copy,
+  .ex-more-copy,
+  .ex-project-visual,
+  .ex-more-visual,
+  .ex-signal-illustration {
+    grid-column: auto;
   }
 
   .ex-chapter {
-    min-height: 100svh;
-    padding-block: 112px 88px;
+    min-height: auto;
+    padding-block: 88px 72px;
   }
 
   .ex-project-copy,
@@ -928,10 +923,6 @@
 
   .ex-project-description {
     max-width: 62ch;
-  }
-
-  .ex-project-number {
-    top: 0;
   }
 
   .ex-signal-illustration {
@@ -981,8 +972,8 @@
 
   .ex-hero-inner {
     min-height: calc(100svh - 56px);
-    gap: 40px;
-    padding-block: 64px 19px;
+    gap: 32px;
+    padding-block: 40px 18px;
   }
 
   .ex-kicker {
@@ -1039,12 +1030,11 @@
   }
 
   .ex-hero-engraving {
-    right: 0;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    height: 33%;
-    opacity: 0.14;
+    top: -56px;
+    right: -42%;
+    width: 142%;
+    height: 58%;
+    opacity: 0.16;
   }
 
   .ex-hero::before,
@@ -1062,13 +1052,13 @@
   }
 
   .ex-chapter {
-    padding-block: 96px 64px;
+    padding-block: 76px 56px;
   }
 
   .ex-project-layout,
   .ex-more-layout,
   .ex-approach-inner {
-    gap: 48px;
+    gap: 36px;
   }
 
   .ex-section-heading {
@@ -1100,11 +1090,6 @@
 
   .ex-project-description {
     font-size: 17px;
-  }
-
-  .ex-project-number {
-    top: 0;
-    font-size: 47vw;
   }
 
   .ex-media-frame,

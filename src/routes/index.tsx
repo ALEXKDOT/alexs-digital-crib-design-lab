@@ -5,7 +5,6 @@ import cvAsset from "@/assets/alexander-krawec-cv.pdf.asset.json";
 import clinicalShot from "@/assets/clinical-timeline-preview.webp.asset.json";
 import clinicalVideo from "@/assets/clinical-timeline-preview.mp4.asset.json";
 import clinicalWebm from "@/assets/clinical-timeline-preview.webm.asset.json";
-import centralParkAsset from "@/assets/central-park-footer.webp.asset.json";
 import edShot from "@/assets/ed-throughput-preview.webp.asset.json";
 import edVideo from "@/assets/ed-throughput-preview.mp4.asset.json";
 import edWebm from "@/assets/ed-throughput-preview.webm.asset.json";
@@ -14,7 +13,6 @@ import manhattanFooter from "@/assets/manhattan-footer.png.asset.json";
 import nmatlasShot from "@/assets/nmatlas-poster.webp.asset.json";
 import nmatlasVideo from "@/assets/nmatlas-preview.mp4.asset.json";
 import nmatlasWebm from "@/assets/nmatlas-preview.webm.asset.json";
-import nokotaShot from "@/assets/nokota-preview.webp.asset.json";
 import responsemapShot from "@/assets/responsemap-preview.webp.asset.json";
 import responsemapVideo from "@/assets/responsemap-preview.mp4.asset.json";
 import responsemapWebm from "@/assets/responsemap-preview.webm.asset.json";
@@ -49,6 +47,8 @@ export const Route = createFileRoute("/")({
 const CV_URL = cvAsset.url;
 const EMAIL = "KrawecERAS@Gmail.com";
 const GITHUB_URL = "https://github.com/ALEXKDOT";
+const HERO_IMAGE_URL = "assets/bow-bridge-blue-line.jpg";
+const NOKOTA_HORSE_URL = "assets/nokota-horse.png";
 const NMATLAS_URL =
   "https://alexkdot.github.io/NMAtlas/?v=0.17.0#topic=tms-depression&target=dlpfc&map=off&regions=&regionOpacity=0.16&hemisphere=both&view=free&cortex=0.065&mapOpacity=0.28&labels=false&bundles=CS_A&tractMode=suggested&panel=targets";
 
@@ -362,9 +362,6 @@ function ProjectChapter({ feature, index }: { feature: Feature; index: number })
         </Reveal>
 
         <Reveal className="ex-project-visual">
-          <span className="ex-project-number" aria-hidden="true">
-            {number}
-          </span>
           <figure>
             <ProjectMedia feature={feature} />
           </figure>
@@ -442,10 +439,10 @@ function Index() {
         <section className="ex-hero" aria-labelledby="hero-title">
           <img
             className="ex-hero-engraving layer"
-            src={centralParkAsset.url}
+            src={HERO_IMAGE_URL}
             alt=""
-            width={1920}
-            height={767}
+            width={1800}
+            height={1260}
             aria-hidden="true"
             fetchPriority="high"
           />
@@ -517,13 +514,13 @@ function Index() {
                 process to the learner&apos;s cognitive, academic, and practical constraints.
               </Details>
             </Reveal>
-            <Reveal className="ex-more-visual">
+            <Reveal className="ex-more-visual ex-more-visual--horse">
               <a href="https://nokotamcat.com/" aria-label="Visit Nokota">
                 <img
-                  src={nokotaShot.url}
-                  alt="Nokota MCAT Tutoring website"
-                  width={1920}
-                  height={997}
+                  src={NOKOTA_HORSE_URL}
+                  alt="Nokota horse illustration"
+                  width={1518}
+                  height={892}
                   loading="lazy"
                 />
               </a>
