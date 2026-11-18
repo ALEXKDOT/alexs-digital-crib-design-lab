@@ -199,7 +199,7 @@
 }
 
 .ex-hero-engraving {
-  --ex-hero-image-opacity: 0.28;
+  --ex-hero-image-opacity: 0.15;
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -464,6 +464,10 @@
 .ex-project-note {
   margin-top: 14px !important;
   color: var(--ex-muted);
+}
+
+.ex-more-copy > .ex-project-note:first-child {
+  margin-top: 0 !important;
 }
 
 .ex-chapter--blue .ex-project-note {
@@ -833,6 +837,11 @@
 }
 
 @media (min-width: 1024px) {
+  .ex-chapter {
+    min-height: auto;
+    padding-block: 80px 48px;
+  }
+
   #work {
     min-height: 840px;
     padding-block: 80px 48px;
@@ -849,14 +858,6 @@
 
   .ex-approach-illustration {
     grid-column: span 7;
-  }
-}
-
-@media (min-width: 1200px) {
-  .ex-chapter {
-    height: auto;
-    min-height: 840px;
-    padding-block: 80px 48px;
   }
 }
 
@@ -887,7 +888,7 @@
   }
 
   .ex-hero-engraving {
-    --ex-hero-image-opacity: 0.22;
+    --ex-hero-image-opacity: 0.12;
   }
 
   .ex-hero-facts {
@@ -1044,7 +1045,7 @@
   }
 
   .ex-hero-engraving {
-    --ex-hero-image-opacity: 0.18;
+    --ex-hero-image-opacity: 0.1;
   }
 
   .ex-hero::before,
