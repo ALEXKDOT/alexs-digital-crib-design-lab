@@ -356,9 +356,9 @@
 .ex-chapter {
   display: flex;
   min-height: 780px;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
-  padding-block: 88px 64px;
+  padding-block: 80px 64px;
 }
 
 .ex-chapter--paper {
@@ -389,7 +389,8 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 24px;
 }
 
 .ex-project-copy,
@@ -399,7 +400,10 @@
 }
 
 .ex-section-heading {
-  margin-bottom: 40px;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .ex-section-heading h2,
@@ -415,6 +419,7 @@
 .ex-section-heading p {
   max-width: 48ch;
   margin-top: 18px !important;
+  margin-inline: auto;
   color: var(--ex-muted);
   font-size: 18px;
 }
@@ -830,7 +835,7 @@
 @media (min-width: 1024px) {
   #work {
     min-height: 860px;
-    padding-block: 88px 64px;
+    padding-block: 80px 64px;
   }
 }
 
@@ -838,7 +843,7 @@
   .ex-chapter {
     height: 100svh;
     min-height: 100svh;
-    padding-block: 88px 64px;
+    padding-block: 80px 64px;
   }
 }
 
@@ -895,7 +900,7 @@
   .ex-more-layout,
   .ex-approach-inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 32px;
   }
 
   .ex-project-copy,
@@ -908,7 +913,7 @@
 
   .ex-chapter {
     min-height: auto;
-    padding-block: 88px 72px;
+    padding-block: 80px 64px;
   }
 
   .ex-project-copy,
@@ -1052,7 +1057,7 @@
   }
 
   .ex-chapter {
-    padding-block: 76px 56px;
+    padding-block: 68px 56px;
   }
 
   .ex-project-layout,
@@ -1062,7 +1067,7 @@
   }
 
   .ex-section-heading {
-    margin-bottom: 48px;
+    margin-bottom: 0;
   }
 
   .ex-section-heading h2,

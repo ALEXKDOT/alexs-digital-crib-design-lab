@@ -326,13 +326,13 @@ function ProjectChapter({ feature, index }: { feature: Feature; index: number })
       aria-labelledby={headingId}
     >
       <div className="ex-wrap wrap ex-project-layout">
+        {index === 0 && (
+          <Reveal className="ex-section-heading">
+            <h2>Selected work</h2>
+            <p>Clinical tools, individualized teaching, and early-stage biodesign.</p>
+          </Reveal>
+        )}
         <Reveal className="ex-project-copy">
-          {index === 0 && (
-            <div className="ex-section-heading">
-              <h2>Selected work</h2>
-              <p>Clinical tools, individualized teaching, and early-stage biodesign.</p>
-            </div>
-          )}
           <p className="ex-project-meta">
             <span>
               {number} / {total}
@@ -488,10 +488,10 @@ function Index() {
 
         <section className="ex-chapter ex-chapter--paper ex-more" aria-labelledby="nokota-title">
           <div className="ex-wrap wrap ex-more-layout">
+            <Reveal className="ex-section-heading">
+              <h2>More projects</h2>
+            </Reveal>
             <Reveal className="ex-more-copy">
-              <div className="ex-section-heading">
-                <h2>More projects</h2>
-              </div>
               <p className="ex-project-note">Founder and Lead Instructor</p>
               <h3 id="nokota-title">Nokota MCAT Tutoring</h3>
               <p className="ex-project-description">
